@@ -1,0 +1,23 @@
+# Use only ascii symbols in comments.
+AsciiComments:
+  Enabled: false
+
+MethodLength:
+  CountComments: true # コメントも行数に数えるか
+  Max: 30 # メソッド内に何行書けるか
+
+Metrics/AbcSize:
+  Enabled: true
+  Max: 45 # ABCサイズチェック
+
+LineLength:
+  Max: 130 # 1行あたりの文字数チェック
+
+AllCops:
+  Exclude:
+    - config.ru
+    - Gemfile
+    - Rakefile
+    - bin/*
+    - config/**/*
+    - 'vendor/**/*'
