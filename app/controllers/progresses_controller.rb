@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # コールバックを受け入れるパスを作る
-class QueriesController < ApplicationController
+class ProgressesController < ApplicationController
   def create
     p params
   end
