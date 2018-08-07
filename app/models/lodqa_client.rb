@@ -3,8 +3,8 @@
 # LODQA BSにHTTPリクエストを送る
 module LodqaClient
   class << self
-    SERVER_URL = 'http://localhost/queries'
-    CALLBACK_URL = 'https://webhook.site/7857288e-e2a6-4030-bce4-055b312752c9'
+    SERVER_URL = 'http://localhost:81/queries'
+    CALLBACK_URL = 'http://host.docker.internal:80/queries/310d4eab-d454-4087-954e-a4b1638c5af2/progress'
 
     def post_query(question)
       post_params = { query: question,
