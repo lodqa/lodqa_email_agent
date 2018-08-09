@@ -3,10 +3,12 @@
 # コールバックを受け入れるパスを作る
 class ProgressesController < ApplicationController
   def create
-    p params
+    # メールを送信する
+    MailSender.send_mail('text mail', params)
   end
 
   def destroy
-    p params
+    # メールを送信する
+    MailSender.send_mail('text mail', params)
   end
 end
