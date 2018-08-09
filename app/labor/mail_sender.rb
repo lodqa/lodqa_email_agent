@@ -11,7 +11,7 @@ module MailSender
   def self.send_mail(subject, body)
     from = Email.new(email: 'lodqa-mailer@lodqa.org')
     to = Email.new(email: 'sufujj@gmail.com')
-    content = Content.new(type: 'text/plain', value: body)
+    content = Content.new(type: 'text/plain', value: body.to_s)
     mail = Mail.new(from, subject, to, content)
 
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
