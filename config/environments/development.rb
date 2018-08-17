@@ -32,7 +32,7 @@ Rails.application.configure do
 
   # 接続するメールサーバーの設定(gmail)
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => ENV['HOST'] }
+  config.action_mailer.default_url_options = { host: ENV['HOST'] }
   config.action_mailer.smtp_settings = {
     enable_starttls_auto: true,
     address: 'smtp.gmail.com',
