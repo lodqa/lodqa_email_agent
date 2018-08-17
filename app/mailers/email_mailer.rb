@@ -4,12 +4,12 @@
 class EmailMailer < ActionMailer::Base
   default from: ENV['FROM_EMAIL']
 
-  def self.deliver_email(subject:)
-    build_email(subject: subject).deliver
+  def self.deliver_email(subject)
+    build_email(subject: subject).deliver_later
   end
 
   def build_email(subject:)
     to_email = ENV['TO_EMAIL']
-    mail(to: to_email, subject: subject, &:html)
+    mail(to: to_email, subject: subject)
   end
 end
