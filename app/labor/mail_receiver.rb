@@ -5,13 +5,13 @@ require 'mail'
 
 # メールを受信する
 module MailReceiver
-  def self.receive_mail
-    address = 'imap.gmail.com'
-    usessl = true
-    port = 993
+  ADDRESS = 'imap.gmail.com'
+  USESSL = true
+  PORT = 993
 
+  def self.receive_mail
     # imapの接続とログイン
-    imap = Net::IMAP.new(address, port, usessl)
+    imap = Net::IMAP.new(ADDRESS, PORT, USESSL)
     imap.login(ENV['GMAIL_USER_NAME'], ENV['GMAIL_PASSWORD'])
     # メールボックスを選択
     imap.select('INBOX')
