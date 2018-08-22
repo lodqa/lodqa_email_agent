@@ -17,30 +17,9 @@ module MailReceiver
     imap.select('INBOX')
     # 全てのメールを取得
     ids = imap.search(['ALL'])
-
-    questions = query_value(imap, ids)
-    questions.compact! if questions.present?
-  end
-
-  def self.query_value(imap, ids)
     imap.fetch(ids, 'RFC822').map do |m|
       mail = Mail.new(m.attr['RFC822'])
-      body = nil
-      if mail.multipart?
-        # plantextなメールかチェック
-        if mail.text_part
-          body = mail.text_part.decoded
-        # htmlなメールかチェック
-        elsif mail.html_part
-          body = mail.html_part.decoded
-        end
-      else
-        body = mail.body
-      end
-      if body.include?('query')
-        query_value = body.gsub(/[{\"}]/, '')
-        query_value.split(', ').map { |h| (h1, h2) = h.split('=>'); { h1 => h2 } }.reduce(:merge)['query']
-      end
+      mail.text_part.decoded
     end
   end
 end
