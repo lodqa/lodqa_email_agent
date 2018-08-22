@@ -17,7 +17,9 @@ module MailReceiver
     imap.select('INBOX')
     # 全てのメールを取得
     ids = imap.search(['ALL'])
-
-    imap.fetch(ids, 'RFC822').map { |m| Mail.new(m.attr['RFC822']) }
+    imap.fetch(ids, 'RFC822').map do |m|
+      mail = Mail.new(m.attr['RFC822'])
+      mail.text_part.decoded
+    end
   end
 end
