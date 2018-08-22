@@ -13,6 +13,9 @@ Metrics/AbcSize:
 LineLength:
   Max: 130 # 1行あたりの文字数チェック
 
+Semicolon:
+  AllowAsExpressionSeparator: true
+
 AllCops:
   Exclude:
     - config.ru
