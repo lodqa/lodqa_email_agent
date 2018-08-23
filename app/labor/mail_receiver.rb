@@ -19,7 +19,9 @@ module MailReceiver
     ids = imap.search(['ALL'])
     imap.fetch(ids, 'RFC822').map do |m|
       mail = Mail.new(m.attr['RFC822'])
-      mail.text_part.decoded
+      email = mail.reply_to ? mail.reply_to.join('') : mail.from.join('')
+      body = mail.text_part.decoded
+      { email => body }
     end
   end
 end
