@@ -1,4 +1,7 @@
 # frozen_string_literal: true
 
-# LODQA BSにクエリーを登録するスクリプトを追加する
-LodqaClient.post_query 'Which genes are associated with Endothelin receptor type B?', 'sufujj@gmail.com'
+received_mail = MailReceiver.receive_mail
+received_mail.each do |mail|
+  # LODQA BSにクエリーを登録するスクリプトを追加する
+  LodqaClient.post_query mail[:body], mail[:email]
+end
