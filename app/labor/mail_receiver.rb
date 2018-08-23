@@ -21,7 +21,7 @@ module MailReceiver
       mail = Mail.new(m.attr['RFC822'])
       email = mail.reply_to ? mail.reply_to.join('') : mail.from.join('')
       body = mail.text_part.decoded
-      { email => body }
+      { email: email, body: body }
     end
   end
 end
