@@ -28,3 +28,27 @@ To generate api docmuent.
 ```
 docker run --rm -v (pwd):/opt swagger2markup/swagger2markup convert -i /opt/openapi/openapi.yml -c /opt/openapi/config.properties -f /opt/api
  ```
+
+## プロジェクトフォルダー内の.envファイルに以下内容で環境変数を設定する
+
+* サーバの設定
+HOST_LODQA_BS=localhost:81
+
+* クライアントの設定
+HOST_LODQA_EMAIL_AGENT=host.docker.internal:80
+
+* 送信元のメールアドレス設定
+FROM_EMAIL=lodemailagent@gmail.com
+
+* 送信先のメールアドレス設定
+TO_EMAIL=[mail address]
+
+* 接続するメールサーバー(gmail)のメールアドレス設定
+* メールアカウントの2 段階認証プロセスを有効にする
+* （https://support.google.com/accounts/answer/185839?hl=ja&ref_topic=2954345）
+GMAIL_USER_NAME=lodemailagent@gmail.com
+
+* 接続するメールサーバー(gmail)のパスワード設定
+* アプリ パスワードの生成して16桁のパスワードを設定する
+* （https://support.google.com/accounts/answer/185833?hl=ja）
+GMAIL_PASSWORD=[16桁のパスワード]
