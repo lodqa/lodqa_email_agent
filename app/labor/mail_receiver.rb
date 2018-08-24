@@ -15,8 +15,8 @@ module MailReceiver
     imap.login(ENV['GMAIL_USER_NAME'], ENV['GMAIL_PASSWORD'])
     # メールボックスを選択
     imap.select('INBOX')
-    # 全てのメールを取得
-    ids = imap.search(['ALL'])
+    # 未読(UNSEEN)のみ取得する
+    ids = imap.search(['UNSEEN'])
     imap.fetch(ids, 'RFC822').map do |m|
       mail = Mail.new(m.attr['RFC822'])
       email = mail.reply_to ? mail.reply_to[0] : mail.from[0]
