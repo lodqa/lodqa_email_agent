@@ -29,13 +29,13 @@ To generate api docmuent.
 docker run --rm -v (pwd):/opt swagger2markup/swagger2markup convert -i /opt/openapi/openapi.yml -c /opt/openapi/config.properties -f /opt/api
  ```
 
-## 環境変数(.env)の設定方法
+## プロジェクトフォルダー内の.envファイルに以下内容で環境変数を設定する
 
 * サーバの設定
 HOST_LODQA_BS=localhost:81
 
 * クライアントの設定
-HOST=host.docker.internal:80
+HOST_LODQA_EMAIL_AGENT=host.docker.internal:80
 
 * 送信元のメールアドレス設定
 FROM_EMAIL=lodemailagent@gmail.com
