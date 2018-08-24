@@ -17,15 +17,12 @@ module MailReceiver
     imap.select('INBOX')
     # 未読(UNSEEN)のみ取得する
     ids = imap.search(['UNSEEN'])
-    if ids.empty?
-      {}
-    else
-      imap.fetch(ids, 'RFC822').map do |m|
-        mail = Mail.new(m.attr['RFC822'])
-        email = mail.reply_to ? mail.reply_to[0] : mail.from[0]
-        body = mail.text_part.decoded
-        { email: email, body: body.chomp }
-      end
+    return [] if ids.empty?
+    imap.fetch(ids, 'RFC822').map do |m|
+      mail = Mail.new(m.attr['RFC822'])
+      email = mail.reply_to ? mail.reply_to[0] : mail.from[0]
+      body = mail.text_part.decoded
+      { email: email, body: body.chomp }
     end
   end
 end
