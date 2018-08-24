@@ -1,4 +1,4 @@
-FROM ruby:2.4-alpine3.6
+FROM ruby:2.4.4-alpine
 
 ENV BUILD_PACKAGES="curl-dev ruby-dev build-base" \
     DEV_PACKAGES="zlib-dev libxml2-dev libxslt-dev tzdata yaml-dev sqlite-dev" \
