@@ -24,3 +24,5 @@ COPY Gemfile.lock /usr/src/myapp
 RUN gem install bundler
 RUN bundle config build.nokogiri --use-system-libraries && \
     bundle install --jobs=4 --retry=10 --clean
+
+CMD ["bin/rails", "s", "-b", "0.0.0.0"]
