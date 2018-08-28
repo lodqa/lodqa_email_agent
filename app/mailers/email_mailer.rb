@@ -10,7 +10,7 @@ class EmailMailer < ActionMailer::Base
 
   def build_email(subject, body)
     @body = body
-    to_email = ENV['TO_EMAIL']
+    to_email = body[:mail_id]
     mail(to: to_email, subject: subject)
   end
 end
