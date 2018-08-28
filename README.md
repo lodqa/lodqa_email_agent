@@ -40,9 +40,6 @@ HOST_LODQA_EMAIL_AGENT=host.docker.internal:80
 * 送信元のメールアドレス設定
 FROM_EMAIL=lodemailagent@gmail.com
 
-* 送信先のメールアドレス設定
-TO_EMAIL=[mail address]
-
 * 接続するメールサーバー(gmail)のメールアドレス設定
 * メールアカウントの2 段階認証プロセスを有効にする
 * （https://support.google.com/accounts/answer/185839?hl=ja&ref_topic=2954345）
