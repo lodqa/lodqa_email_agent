@@ -6,9 +6,4 @@ class ProgressesController < ApplicationController
     # メールを送信（SMTPサーバ使用）
     EmailMailer.deliver_email('text mail', params)
   end
-
-  def destroy
-    # メールを送信（SMTPサーバ使用）
-    EmailMailer.deliver_email('text mail', params)
-  end
 end
