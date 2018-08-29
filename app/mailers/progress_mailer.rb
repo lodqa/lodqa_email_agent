@@ -9,7 +9,7 @@ class ProgressMailer < ActionMailer::Base
   end
 
   def build_email(subject, body)
-    @body = JSON.pretty_generate(body[:answers])
+    @body = body[:answers].blank? ? 'No answer was found.' : JSON.pretty_generate(body[:answers])
     to_email = body[:mail_id]
     mail(to: to_email, subject: subject, &:text)
   end
