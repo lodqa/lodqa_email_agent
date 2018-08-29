@@ -11,6 +11,6 @@ class EmailMailer < ActionMailer::Base
   def build_email(subject, body)
     @body = JSON.pretty_generate(body[:answers])
     to_email = body[:mail_id]
-    mail(to: to_email, subject: subject)
+    mail(to: to_email, subject: subject, &:text)
   end
 end
