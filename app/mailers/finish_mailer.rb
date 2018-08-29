@@ -4,13 +4,12 @@
 class FinishMailer < ActionMailer::Base
   default from: ENV['FROM_EMAIL']
 
-  def self.deliver_email(subject, body)
-    build_email(subject, body).deliver_now
+  def self.deliver_email(subject, to_email, body)
+    build_email(subject, to_email, body).deliver_now
   end
 
-  def build_email(subject, body)
-    @body = body[:answers].blank? ? 'No answer was found.' : JSON.pretty_generate(body[:answers])
-    to_email = body[:mail_id]
+  def build_email(subject, to_email, body)
+    @body = body.blank? ? 'No answer was found.' : JSON.pretty_generate(body)
     mail(to: to_email, subject: subject, &:text)
   end
 end

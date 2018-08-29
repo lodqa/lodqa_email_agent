@@ -4,13 +4,12 @@
 class StartMailer < ActionMailer::Base
   default from: ENV['FROM_EMAIL']
 
-  def self.deliver_email(subject, body)
-    build_email(subject, body).deliver_now
+  def self.deliver_email(subject, to_email)
+    build_email(subject, to_email).deliver_now
   end
 
-  def build_email(subject, body)
+  def build_email(subject, to_email)
     @body = 'Searching the query have been starting.'
-    to_email = body[:mail_id]
     mail(to: to_email, subject: subject, &:text)
   end
 end
