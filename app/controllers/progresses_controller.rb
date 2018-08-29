@@ -4,6 +4,6 @@
 class ProgressesController < ApplicationController
   def create
     # メールを送信（SMTPサーバ使用）
-    EmailMailer.deliver_email('text mail', params)
+    ProgressMailer.deliver_email('text mail', params)
   end
 end
