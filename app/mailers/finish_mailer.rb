@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# メール送信
-class ProgressMailer < ActionMailer::Base
+# 終了メール送信
+class FinishMailer < ActionMailer::Base
   default from: ENV['FROM_EMAIL']
 
   def self.deliver_email(subject, body)
