@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'mail'
-require 'net/pop'
 
 # メールを受信する
 module MailReceiver
@@ -20,20 +19,14 @@ module MailReceiver
     end
 
     mails = Mail.all
-    mail_body_array = []
-    mail_body_hash = {}
-
     return [] if mails.empty?
-    mails.each do |mail|
+
+    mails.map do |mail|
       # 受信メール内容
       body = mail.text_part.decoded
       email = mail.reply_to ? mail.reply_to[0] : mail.from[0]
       # メールアドレスと本文内容をハッシュ化
-      mail_body_hash = { email: email, body: body.chomp }
-      # ハッシュを配列に追加
-      mail_body_array.push(mail_body_hash)
+      { email: email, body: body.chomp }
     end
-    # メールアドレスと本文内容の配列
-    mail_body_array
   end
 end
