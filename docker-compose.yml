@@ -2,13 +2,9 @@ version: '3'
 services:
   lodqa_bs:
     build: https://github.com/lodqa/lodqa_bs.git
-    ports:
-      - 81:3000
 
   lodqa_email_agent:
     build: .
-    ports:
-      - 80:3000
     volumes:
       - .:/usr/src/myapp
     env_file:
