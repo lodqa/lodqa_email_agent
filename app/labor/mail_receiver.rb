@@ -13,8 +13,8 @@ module MailReceiver
     Mail.defaults do
       retriever_method :pop3, address: ADDRESS,
                               port: PORT,
-                              user_name: ENV['GMAIL_USER_NAME'],
-                              password: ENV['GMAIL_PASSWORD'],
+                              user_name: ENV['POP_USERNAME'],
+                              password: ENV['POP_PASSWORD'],
                               enable_ssl: USESSL
     end
 
