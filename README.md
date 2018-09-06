@@ -22,11 +22,11 @@ HOST_LODQA_EMAIL_AGENT=lodqa_email_agent:3000
 ```
 FROM_EMAIL=lodemailagent@gmail.com
 ```
-### 接続するメールサーバー(gmail)のメールアドレス設定
+### 接続するメールサーバーのメールアドレス設定
 ```
 POP_USERNAME=lodemailagent@gmail.com
 ```
-### 接続するメールサーバー(gmail)のパスワード設定
+### 接続するメールサーバーのパスワード設定
 ```
 POP_PASSWORD=[パスワード]
 ```
