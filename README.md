@@ -22,15 +22,11 @@ HOST_LODQA_EMAIL_AGENT=lodqa_email_agent:3000
 ```
 FROM_EMAIL=lodemailagent@gmail.com
 ```
-### 接続するメールサーバー(gmail)のメールアドレス設定
-### メールアカウントの2 段階認証プロセスを有効にする
-（https://support.google.com/accounts/answer/185839?hl=ja&ref_topic=2954345）
+### 接続するメールサーバーのメールアドレス設定
 ```
-GMAIL_USER_NAME=lodemailagent@gmail.com
+POP_USERNAME=lodemailagent@gmail.com
 ```
-### 接続するメールサーバー(gmail)のパスワード設定
-### アプリ パスワードの生成して16桁のパスワードを設定する
-（https://support.google.com/accounts/answer/185833?hl=ja）
+### 接続するメールサーバーのパスワード設定
 ```
-GMAIL_PASSWORD=[16桁のパスワード]
+POP_PASSWORD=[パスワード]
 ```
