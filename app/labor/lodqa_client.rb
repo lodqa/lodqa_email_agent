@@ -3,7 +3,7 @@
 # LODQA BSにHTTPリクエストを送る
 module LodqaClient
   class << self
-    SERVER_URL = "http://#{ENV['HOST_LODQA_BS']}/queries"
+    SERVER_URL = "http://#{ENV['HOST_LODQA_BS']}/searches"
 
     def post_query(question, address_to_send)
       start_callback_url = "http://#{ENV['HOST_LODQA_EMAIL_AGENT']}/mail/#{address_to_send}/start"
