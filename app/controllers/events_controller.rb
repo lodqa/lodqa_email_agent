@@ -20,7 +20,6 @@ class EventsController < ApplicationController
       # 終了メールを送信（SMTPサーバ使用）
       FinishMailer.deliver_email('finish mail', to_email, body)
     else
-      logger = Logger.new(STDERR)
       logger.info('イベント「'"#{event}"'」は想定していないイベントです。')
     end
   end
