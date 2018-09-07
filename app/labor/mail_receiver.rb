@@ -21,7 +21,7 @@ module MailReceiver
     mails = Mail.all
     return [] if mails.empty?
 
-    mails.map do |mail|
+    email_bodys = mails.map do |mail|
       next unless mail.text_part
       # 受信メール内容
       body = mail.text_part.decoded
@@ -29,5 +29,6 @@ module MailReceiver
       # メールアドレスと本文内容をハッシュ化
       { email: email, body: body.chomp }
     end
+    email_bodys.compact!
   end
 end
