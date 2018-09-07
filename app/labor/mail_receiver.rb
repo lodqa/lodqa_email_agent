@@ -22,6 +22,7 @@ module MailReceiver
     return [] if mails.empty?
 
     mails.map do |mail|
+      next unless mail.text_part
       # 受信メール内容
       body = mail.text_part.decoded
       email = mail.reply_to ? mail.reply_to[0] : mail.from[0]
