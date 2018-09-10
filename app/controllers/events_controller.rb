@@ -11,8 +11,10 @@ class EventsController < ApplicationController
     # イベントで判別し、開始・終了のメール送信を行う
     case event
     when 'start' then
+      # クエリーの取得
+      query = params[:query]
       # 開始メールを送信（SMTPサーバ使用）
-      StartMailer.deliver_email('start mail', to_email)
+      StartMailer.deliver_email('start mail', to_email, query)
     when 'finish' then
       # メール本文の取得
       param_answers = params[:answers]
