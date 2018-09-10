@@ -11,6 +11,8 @@ module LodqaClient
                       callback_url: callback_url }
 
       RestClient::Request.execute method: :post, url: SERVER_URL, payload: post_params
+    rescue StandardError
+      FailureMailer.deliver_email('failure mail', 'Gateway error: LODQA BS server is unavailable.')
     end
   end
 end
