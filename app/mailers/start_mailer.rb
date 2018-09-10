@@ -9,7 +9,7 @@ class StartMailer < ActionMailer::Base
   end
 
   def build_email(subject, to_email, query)
-    @body = 'Searching the query "'"#{query}"'" have been starting.'
+    @query = query
     mail(to: to_email, subject: subject, &:text)
   end
 end
