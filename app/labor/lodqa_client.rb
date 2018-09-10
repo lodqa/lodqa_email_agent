@@ -11,6 +11,8 @@ module LodqaClient
                       callback_url: callback_url }
 
       RestClient::Request.execute method: :post, url: SERVER_URL, payload: post_params
+    rescue Errno::ECONNREFUSED, Net::OpenTimeout, SocketError
+      FailureMailer.deliver_email('failure mail', address_to_send)
     end
   end
 end
