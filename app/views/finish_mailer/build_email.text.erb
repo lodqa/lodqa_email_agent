@@ -1,1 +1,7 @@
-<%= @body %>
+<% if @items_count == 0 %>
+No answer was found.
+<% else %>
+<%= @items_count %> items have been found as the answer to your question.
+You can see the results at:
+http://bs.lodqa.org/answer?search_id=<%= @search_id %>
+<% end %>
