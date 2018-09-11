@@ -18,7 +18,9 @@ module MailReceiver
                               enable_ssl: USESSL
     end
 
+    puts "Conncet to HOST:#{ADDRESS}:#{PORT} USER:#{ENV['POP_USERNAME']}/#{ENV['POP_PASSWORD']}"
     mails = Mail.all
+    puts "#{mails.length} mails recieved."
     return [] if mails.empty?
 
     mails.map do |mail|
