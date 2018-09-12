@@ -30,3 +30,15 @@ POP_USERNAME=lodemailagent@gmail.com
 ```
 POP_PASSWORD=[パスワード]
 ```
+### POPサーバーのアドレス設定
+```
+POP_ADDRESS=pop.gmail.com
+```
+### POPサーバーのSSL使用の有無設定
+```
+POP_USESSL=true
+```
+### POPサーバーのポート番号設定
+```
+POP_PORT=995
+```
