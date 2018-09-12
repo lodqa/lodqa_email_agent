@@ -25,10 +25,10 @@ module MailReceiver
 
     mails.map do |mail|
       # 受信メール内容
-      body = mail.subject
+      subject = mail.subject
       email = mail.reply_to ? mail.reply_to[0] : mail.from[0]
-      # メールアドレスと本文内容をハッシュ化
-      { email: email, body: body.chomp }
+      # メールアドレスとタイトルをハッシュ化
+      { reply_to: email, query: subject }
     end
   end
 end
