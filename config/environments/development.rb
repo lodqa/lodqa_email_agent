@@ -52,4 +52,13 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.pop_settings = {
+    address: ENV['POP_ADDRESS'],
+    port: ENV['POP_PORT'],
+    user_name: ENV['POP_USERNAME'],
+    password: ENV['POP_PASSWORD'],
+    # 暗号化あり:true、暗号化なし:falseを指定する必要がある。
+    use_ssl: ENV['POP_USESSL'] != 'true'
+  }
 end
