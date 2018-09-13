@@ -11,11 +11,12 @@ module MailReceiver
                               port: ENV['POP_PORT'],
                               user_name: ENV['POP_USERNAME'],
                               password: ENV['POP_PASSWORD'],
-                              enable_ssl: ENV['POP_USESSL']
+                              # 暗号化あり:true、暗号化なし:falseを指定する必要がある。
+                              enable_ssl: ENV['POP_USESSL'] != 'true'
     end
 
     puts "Conncet to HOST:#{ENV['POP_ADDRESS']}:#{ENV['POP_PORT']} USER:#{ENV['POP_USERNAME']}/#{ENV['POP_PASSWORD']}"
-    mails = Mail.all
+    mails = Mail.find_and_delete
     puts "#{mails.length} mails recieved."
     return [] if mails.empty?
 
