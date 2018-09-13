@@ -16,7 +16,7 @@ module MailReceiver
     end
 
     puts "Conncet to HOST:#{ENV['POP_ADDRESS']}:#{ENV['POP_PORT']} USER:#{ENV['POP_USERNAME']}/#{ENV['POP_PASSWORD']}"
-    mails = Mail.find_and_delete(what: :first)
+    mails = Mail.find_and_delete
     puts "#{mails.length} mails recieved."
     return [] if mails.empty?
 
