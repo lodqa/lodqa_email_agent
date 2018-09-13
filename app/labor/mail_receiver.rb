@@ -11,6 +11,7 @@ module MailReceiver
                               port: ENV['POP_PORT'],
                               user_name: ENV['POP_USERNAME'],
                               password: ENV['POP_PASSWORD'],
+                              # 暗号化あり:true、暗号化なし:falseを指定する必要がある。
                               enable_ssl: ENV['POP_USESSL'] != 'true'
     end
 
