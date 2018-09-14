@@ -31,5 +31,13 @@ module Myapp
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.pop_settings = {
+      address: ENV['POP_ADDRESS'],
+      port: ENV['POP_PORT'],
+      user_name: ENV['POP_USERNAME'],
+      password: ENV['POP_PASSWORD'],
+      # 暗号化あり:true、暗号化なし:falseを指定する必要がある。
+      use_ssl: ENV['POP_USESSL'] != 'true'
+    }
   end
 end
