@@ -24,9 +24,15 @@ module MailReceiver
       # 受信メール内容
       subject = mail.subject
       email = mail.reply_to ? mail.reply_to[0] : mail.from[0]
-      body = IniFile.new(content: mail.text_part.decoded)
-      # メールアドレスとタイトルと本文オプションをハッシュ化
-      { reply_to: email, query: subject, query_option: body }
+      query_option = body_option(mail.text_part.decoded)
+      # メールアドレスとタイトルとクエリーオプションをハッシュ化
+      { reply_to: email, query: subject, query_option: query_option }
     end
+  end
+
+  # 本文情報でクエリのオプション値として設定
+  def self.body_option(body)
+    option = IniFile.new(content: body)
+    option[:global]
   end
 end
