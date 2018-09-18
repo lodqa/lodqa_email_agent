@@ -24,9 +24,9 @@ module MailReceiver
       # 受信メール内容
       subject = mail.subject
       email = mail.reply_to ? mail.reply_to[0] : mail.from[0]
-      body_option = IniFile.new(content: "[global]\nread_timeout=5\nsparql_limit=100\nanswer_limit=10\ncache=no")
+      body = IniFile.new(content: mail.text_part.decoded)
       # メールアドレスとタイトルと本文オプションをハッシュ化
-      { reply_to: email, query: subject, body_option: body_option }
+      { reply_to: email, query: subject, query_option: body }
     end
   end
 end
