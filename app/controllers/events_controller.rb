@@ -6,7 +6,6 @@ class EventsController < ApplicationController
     # イベントの取得
     event = params[:event]
     return render status: 400 if event.blank?
-
     # 送信先メールアドレスの取得
     to_email = params[:mail_id]
     # 検索IDの取得

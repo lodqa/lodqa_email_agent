@@ -11,7 +11,6 @@ module MailReceiver
                               port: Rails.configuration.pop_settings[:port],
                               user_name: Rails.configuration.pop_settings[:user_name],
                               password: Rails.configuration.pop_settings[:password],
-                              # 暗号化あり:true、暗号化なし:falseを指定する必要がある。
                               enable_ssl: Rails.configuration.pop_settings[:use_ssl]
     end
 
@@ -25,8 +24,9 @@ module MailReceiver
       # 受信メール内容
       subject = mail.subject
       email = mail.reply_to ? mail.reply_to[0] : mail.from[0]
-      # メールアドレスとタイトルをハッシュ化
-      { reply_to: email, query: subject }
+      body_option = IniFile.new(content: "[global]\nread_timeout=5\nsparql_limit=100\nanswer_limit=10\ncache=no")
+      # メールアドレスとタイトルと本文オプションをハッシュ化
+      { reply_to: email, query: subject, body_option: body_option }
     end
   end
 end
