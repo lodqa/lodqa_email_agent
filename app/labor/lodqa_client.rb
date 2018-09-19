@@ -7,12 +7,17 @@ module LodqaClient
     def post_query(question, address_to_send, query_option)
       return WarningMailer.deliver_email('warning mail', address_to_send) if question.blank?
       callback_url = "http://#{ENV['HOST_LODQA_EMAIL_AGENT']}/mail/#{address_to_send}/events"
-      post_params = { query: question,
-                      read_timeout: query_option['read_timeout'],
-                      sparql_limit: query_option['sparql_limit'],
-                      answer_limit: query_option['answer_limit'],
-                      cache: query_option['cache'],
-                      callback_url: callback_url }
+      post_params =
+        if query_option.empty?
+          { query: question, callback_url: callback_url }
+        else
+          { query: question,
+            read_timeout: query_option['read_timeout'],
+            sparql_limit: query_option['sparql_limit'],
+            answer_limit: query_option['answer_limit'],
+            cache: query_option['cache'],
+            callback_url: callback_url }
+        end
       RestClient::Request.execute method: :post, url: SERVER_URL, payload: post_params
       puts 'POST succcess.'
     rescue Errno::ECONNREFUSED, Net::OpenTimeout, SocketError
