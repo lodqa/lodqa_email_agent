@@ -12,13 +12,18 @@ class EventsController < ApplicationController
     search_id = params[:search_id]
     # クエリーの取得
     subject = params[:query][0, 130]
+    # オプション情報の取得
+    options = []
+    options.push(params[:read_timeout])
+    options.push(params[:sparql_limit])
+    options.push(params[:answer_limit])
     # イベントで判別し、開始・終了のメール送信を行う
     case event
     when 'start' then
       # クエリーの取得
       query = params[:query]
       # 開始メールを送信（SMTPサーバ使用）
-      StartMailer.deliver_email(subject, to_email, query, search_id)
+      StartMailer.deliver_email(subject, to_email, query, search_id, options)
     when 'finish' then
       # メール本文の取得
       answers = params[:answers]
