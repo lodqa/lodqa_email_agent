@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'mail'
+require 'logger'
 
 # メールを受信する
 module MailReceiver
@@ -37,7 +38,8 @@ module MailReceiver
     def body_option(body)
       option = IniFile.new(content: body)
       option[:global]
-    rescue StandardError
+    rescue IniFile::Error
+      Rails.logger.error('本文「'"#{body}"'」をINI形式で解析できませんでした。')
       {}
     end
   end
