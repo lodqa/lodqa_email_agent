@@ -11,11 +11,11 @@ class EventsController < ApplicationController
     search_id = params[:search_id]
     subject = params[:query][0, 130]
     # オプション情報の取得
-    options = []
-    options.push(params[:read_timeout])
-    options.push(params[:sparql_limit])
-    options.push(params[:answer_limit])
-    options.push(params[:cache])
+    options = {}
+    options[:read_timeout] = params[:read_timeout]
+    options[:sparql_limit] = params[:sparql_limit]
+    options[:answer_limit] = params[:answer_limit]
+    options[:cache] = params[:cache]
     # イベントで判別し、開始・終了のメール送信を行う
     case event
     when 'start' then
