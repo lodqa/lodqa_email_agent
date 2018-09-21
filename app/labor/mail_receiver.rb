@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'mail'
-require 'logger'
 
 # メールを受信する
 module MailReceiver
