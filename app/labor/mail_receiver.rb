@@ -37,7 +37,7 @@ module MailReceiver
     def body_option(body)
       option = IniFile.new(content: body)
       option[:global]
-    rescue Exception
+    rescue StandardError
       {}
     end
   end
