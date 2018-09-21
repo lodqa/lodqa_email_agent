@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './lib/mail_receiver.rb'
+require_relative 'mail_receiver.rb'
 
 received_mails = MailReceiver.receive_mail
 received_mails.each do |mail|
