@@ -38,7 +38,7 @@ module MailReceiver
       option = IniFile.new(content: body)
       option[:global]
     rescue IniFile::Error
-      Rails.logger.error('本文「'"#{body}"'」をINI形式で解析できませんでした。')
+      puts "The body(#{body}) could not be parsed in ini format."
       {}
     end
   end
