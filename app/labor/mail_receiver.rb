@@ -38,7 +38,7 @@ module MailReceiver
       option = IniFile.new(content: body)
       option[:global]
     rescue IniFile::Error
-      puts "The body(#{body}) could not be parsed in ini format."
+      puts "The body(#{body}) could not be parsed as ini format."
       {}
     end
   end
