@@ -6,17 +6,16 @@ class EventsController < ApplicationController
     # イベントの取得
     event = params[:event]
     return render status: 400 if event.blank?
-    # 送信先メールアドレスの取得
+    # 送信先メールアドレス・検索ID・クエリーの取得
     to_email = params[:mail_id]
-    # 検索IDの取得
     search_id = params[:search_id]
-    # クエリーの取得
     subject = params[:query][0, 130]
     # オプション情報の取得
-    options = []
-    options.push(params[:read_timeout])
-    options.push(params[:sparql_limit])
-    options.push(params[:answer_limit])
+    options = {}
+    options[:read_timeout] = params[:read_timeout]
+    options[:sparql_limit] = params[:sparql_limit]
+    options[:answer_limit] = params[:answer_limit]
+    options[:cache] = params[:cache]
     # イベントで判別し、開始・終了のメール送信を行う
     case event
     when 'start' then
