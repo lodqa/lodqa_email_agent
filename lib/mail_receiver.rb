@@ -6,20 +6,17 @@ require 'mail'
 module MailReceiver
   class << self
     def receive_mail
-      # 受信したメール取得
-      mails = pop_connection_mails
-      # 受信したメールが存在してない
+      # メールを受信
+      mails = pop
+      # 受信したメールが0件のとき
       return [] if mails.empty?
-      mails.map do |mail|
-        # メールのハッシュ情報取得
-        mail_info(mail)
-      end
+      mails.map { |mail| to_hash(mail) }
     end
 
     private
 
-    # pop接続で受信したメール取得
-    def pop_connection_mails
+    # pop接続でメールを取得
+    def pop
       # popの接続
       Mail.defaults do
         retriever_method :pop3, address: Rails.configuration.pop_settings[:address],
@@ -36,8 +33,8 @@ module MailReceiver
       mails
     end
 
-    # メールのハッシュ情報取得
-    def mail_info(mail)
+    # メールの情報をハッシュで返す
+    def to_hash(mail)
       # 受信メール内容
       subject = mail.subject
       email = mail.reply_to ? mail.reply_to[0] : mail.from[0]
