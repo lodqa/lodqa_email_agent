@@ -21,3 +21,5 @@ AllCops:
     - bin/*
     - config/**/*
     - 'vendor/**/*'
+    - spec/spec_helper.rb
+    - spec/rails_helper.rb
