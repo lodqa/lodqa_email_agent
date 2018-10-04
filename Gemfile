@@ -37,7 +37,6 @@ group :development do
   gem 'rubocop', '~> 0.58.2'
   gem 'dotenv-rails'
   gem 'webmock'
-  gem 'rspec'
   gem 'rspec-rails'
 end
 
