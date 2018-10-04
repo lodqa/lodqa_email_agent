@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe LodqaClient do
-  describe '#post_query' do
+  describe 'post_query' do
     before do
       ENV['HOST_LODQA_EMAIL_AGENT'] = 'lodqa_email_agent:3000'
       ENV['FROM_EMAIL'] = 'lodqa_test@luxiar.com'
@@ -11,22 +11,23 @@ RSpec.describe LodqaClient do
       @question = 'answers?'
       @address_to_send = 'lodemailagent@gmail.com'
       @option = { 'read_timeout' => 10, 'sparql_limit' => 100, 'answer_limit' => 10, 'cache' => 'no' }
-      @stub = stub_request(:post, LodqaClient::SERVER_URL)
+      registered_query = { callback_url: "http://lodqa_email_agent:3000/mail/#{@address_to_send}/events",
+                           answer_limit: 10, cache: 'no', query: @question, read_timeout: 10, sparql_limit: 100 }
+      @stub_success = stub_request(:post, LodqaClient::SERVER_URL).with(body: registered_query).to_return(status: 200)
     end
 
-    it '成功レスポンスが帰ってくること' do
-      registered_query = { answer_limit: 10, cache: 'no',
-                           callback_url: "http://lodqa_email_agent:3000/mail/#{@address_to_send}/events",
-                           query: @question, read_timeout: 10, sparql_limit: 100 }
-      stub = @stub.with(body: registered_query).to_return(status: 200)
-      expect(subject.post_query(@question, @address_to_send, @option)).to eq nil
-      expect(stub).to have_been_requested
+    context 'LODQA_BSから成功レスポンスが帰ってきたとき' do
+      it 'nilを返すこと' do
+        expect(subject.post_query(@question, @address_to_send, @option)).to eq nil
+        expect(@stub_success).to have_been_requested
+      end
     end
 
-    it '異常レスポンスが帰ってくること' do
-      @option = {}
-      @stub.to_raise Errno::ECONNREFUSED
-      expect(subject.post_query(@question, @address_to_send, @option)).to eq nil
+    context '異常レスポンスが帰ってきた時' do
+      before { stub_request(:post, LodqaClient::SERVER_URL).to_raise Errno::ECONNREFUSED }
+      it 'nilを返すこと' do
+        expect(subject.post_query(@question, @address_to_send, {})).to eq nil
+      end
     end
   end
 end
