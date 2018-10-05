@@ -6,14 +6,14 @@ RSpec.describe LodqaClient do
   describe 'post_query' do
     let(:question) { 'answers?' }
     let(:address_to_send) { 'lodemailagent@gmail.com' }
-    it '初期値の設定' do
+    before(:all) do
       ENV['HOST_LODQA_EMAIL_AGENT'] = 'lodqa_email_agent:3000'
       ENV['FROM_EMAIL'] = 'lodqa_test@luxiar.com'
       LodqaClient::SERVER_URL = 'http://lodqa_bs:3000/searches'
     end
 
     context 'LODQA_BSから成功レスポンスが帰ってきたとき' do
-      option = { 'read_timeout' => 10, 'sparql_limit' => 100, 'answer_limit' => 10, 'cache' => 'no' }
+      let(:option) { { 'read_timeout' => 10, 'sparql_limit' => 100, 'answer_limit' => 10, 'cache' => 'no' } }
       before do
         registered_query = { callback_url: "http://lodqa_email_agent:3000/mail/#{address_to_send}/events",
                              answer_limit: 10, cache: 'no', query: question, read_timeout: 10, sparql_limit: 100 }
