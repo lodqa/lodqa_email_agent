@@ -21,3 +21,4 @@ AllCops:
     - bin/*
     - config/**/*
     - 'vendor/**/*'
+    - spec/**/*
