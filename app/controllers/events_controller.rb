@@ -40,6 +40,7 @@ class EventsController < ApplicationController
     options[:sparql_limit] = params[:sparql_limit]
     options[:answer_limit] = params[:answer_limit]
     options[:cache] = params[:cache]
+    options[:target] = params[:target]
     options
   end
 end
