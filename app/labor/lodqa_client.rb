@@ -25,7 +25,7 @@ module LodqaClient
       post_params[:sparql_limit] = option['sparql_limit'] if option['sparql_limit'].present?
       post_params[:answer_limit] = option['answer_limit'] if option['answer_limit'].present?
       post_params[:cache] = option['cache'] if option['cache'].present?
-      post_params[:cache] = option['target'] if option['target'].present?
+      post_params[:target] = option['target'] if option['target'].present?
       post_params
     end
   end
