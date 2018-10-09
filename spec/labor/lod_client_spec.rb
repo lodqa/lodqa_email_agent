@@ -6,10 +6,11 @@ RSpec.describe LodqaClient do
   describe 'post_query' do
     let(:question) { 'answers?' }
     let(:address_to_send) { 'lodemailagent@gmail.com' }
+    let(:server_url) { 'http://lodqa_bs:3000/searches' }
     before(:all) do
       ENV['HOST_LODQA_EMAIL_AGENT'] = 'lodqa_email_agent:3000'
       ENV['FROM_EMAIL'] = 'lodqa_test@luxiar.com'
-      LodqaClient::SERVER_URL = 'http://lodqa_bs:3000/searches'
+      ENV['HOST_LODQA_BS'] = 'lodqa_bs:3000'
     end
 
     context 'LODQA_BSから成功レスポンスが帰ってきたとき' do
@@ -17,7 +18,7 @@ RSpec.describe LodqaClient do
       before do
         registered_query = { callback_url: "http://lodqa_email_agent:3000/mail/#{address_to_send}/events",
                              answer_limit: 10, cache: 'no', query: question, read_timeout: 10, sparql_limit: 100, target: 'bio2rdf-mashup' }
-        @stub_success = stub_request(:post, LodqaClient::SERVER_URL).with(body: registered_query).to_return(status: 200)
+        @stub_success = stub_request(:post, server_url).with(body: registered_query).to_return(status: 200)
       end
       it 'trueを返すこと' do
         expect(subject.post_query(question, address_to_send, option)).to eq true
@@ -29,7 +30,7 @@ RSpec.describe LodqaClient do
     end
 
     context '異常レスポンスが帰ってきた時' do
-      before { stub_request(:post, LodqaClient::SERVER_URL).to_raise Errno::ECONNREFUSED }
+      before { stub_request(:post, server_url).to_raise Errno::ECONNREFUSED }
       it 'falseを返すこと' do
         expect(subject.post_query(question, address_to_send, {})).to eq false
       end
