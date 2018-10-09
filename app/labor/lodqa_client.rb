@@ -2,7 +2,6 @@
 
 # LODQA BSにHTTPリクエストを送る
 module LodqaClient
-  SERVER_URL = "http://#{ENV['HOST_LODQA_BS']}/searches"
   class << self
     def post_query(question, address_to_send, option)
       return WarningMailer.deliver_email('warning mail', address_to_send) if question.blank?
@@ -10,7 +9,8 @@ module LodqaClient
       post_params = { query: question, callback_url: callback_url }
       post_params = populate_options(post_params, option) if option.present?
 
-      RestClient::Request.execute method: :post, url: SERVER_URL, payload: post_params
+      server_url = "http://#{ENV['HOST_LODQA_BS']}/searches"
+      RestClient::Request.execute method: :post, url: server_url, payload: post_params
       puts 'POST succcess.'
       true
     rescue Errno::ECONNREFUSED, Net::OpenTimeout, SocketError
