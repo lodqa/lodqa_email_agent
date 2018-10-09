@@ -20,7 +20,7 @@ RSpec.describe LodqaClient do
         @stub_success = stub_request(:post, LodqaClient::SERVER_URL).with(body: registered_query).to_return(status: 200)
       end
       it 'nilを返すこと' do
-        expect(subject.post_query(question, address_to_send, option)).to eq nil
+        expect(subject.post_query(question, address_to_send, option)).to eq true
       end
       it 'LODQA_BSを呼び出すこと' do
         subject.post_query(question, address_to_send, option)
@@ -31,7 +31,7 @@ RSpec.describe LodqaClient do
     context '異常レスポンスが帰ってきた時' do
       before { stub_request(:post, LodqaClient::SERVER_URL).to_raise Errno::ECONNREFUSED }
       it 'nilを返すこと' do
-        expect(subject.post_query(question, address_to_send, {})).to eq nil
+        expect(subject.post_query(question, address_to_send, {})).to eq false
       end
       it 'エラーメールが送信されることを確認' do
         allow(FailureMailer).to receive(:deliver_email)
