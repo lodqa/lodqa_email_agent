@@ -13,10 +13,10 @@ RSpec.describe LodqaClient do
     end
 
     context 'LODQA_BSから成功レスポンスが帰ってきたとき' do
-      let(:option) { { 'read_timeout' => 10, 'sparql_limit' => 100, 'answer_limit' => 10, 'cache' => 'no' } }
+      let(:option) { { 'read_timeout' => 10, 'sparql_limit' => 100, 'answer_limit' => 10, 'cache' => 'no', 'target' => 'bio2rdf-mashup' } }
       before do
         registered_query = { callback_url: "http://lodqa_email_agent:3000/mail/#{address_to_send}/events",
-                             answer_limit: 10, cache: 'no', query: question, read_timeout: 10, sparql_limit: 100 }
+                             answer_limit: 10, cache: 'no', query: question, read_timeout: 10, sparql_limit: 100, target: 'bio2rdf-mashup' }
         @stub_success = stub_request(:post, LodqaClient::SERVER_URL).with(body: registered_query).to_return(status: 200)
       end
       it 'nilを返すこと' do
