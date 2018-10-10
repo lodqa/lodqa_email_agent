@@ -13,6 +13,10 @@ Metrics/AbcSize:
 LineLength:
   Max: 130 # 1行あたりの文字数チェック
 
+ParameterLists:
+  Max: 6
+  CountKeywordArgs: true
+
 AllCops:
   Exclude:
     - config.ru
