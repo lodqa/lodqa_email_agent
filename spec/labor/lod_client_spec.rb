@@ -5,8 +5,8 @@ require 'rails_helper'
 RSpec.describe LodqaClient do
   describe 'post_query' do
     let(:question) { 'answers?' }
-    let(:mail_subject) { 'please' }
     let(:address_to_send) { 'lodemailagent@gmail.com' }
+    let(:mail_subject) { 'please' }
     let(:server_url) { 'http://lodqa_bs:3000/searches' }
     before(:all) do
       ENV['HOST_LODQA_EMAIL_AGENT'] = 'lodqa_email_agent:3000'
