@@ -6,10 +6,10 @@ class EventsController < ApplicationController
     # イベントの取得
     event = params[:event]
     return render status: 400 if event.blank?
-    # 送信先メールアドレス・検索ID・クエリーの取得
-    to_email = params[:mail_id]
+    # 送信先メールアドレス・検索ID・件名の取得
+    to_email = params[:mail_address_id]
     search_id = params[:search_id]
-    subject = params[:query][0, 130]
+    subject = "Re: #{URI.decode_www_form_component(params[:mail_subject_id])[0, 130]}"
     # イベントで判別し、開始・終了のメール送信を行う
     case event
     when 'start' then

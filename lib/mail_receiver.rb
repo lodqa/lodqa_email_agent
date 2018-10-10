@@ -37,10 +37,11 @@ module MailReceiver
     def to_hash(mail)
       # 受信メール内容
       email = mail.reply_to ? mail.reply_to[0] : mail.from[0]
+      subject = mail.subject
       query_option = body_option(mail.text_part.decoded)
       query = query_option['query']
       # メールアドレスとタイトルとクエリーオプションをハッシュ化
-      { reply_to: email, query: query, query_option: query_option }
+      { reply_to: email, subject: subject, query: query, query_option: query_option }
     end
 
     # 本文情報でクエリのオプション値として設定
