@@ -3,9 +3,10 @@
 # LODQA BSにHTTPリクエストを送る
 module LodqaClient
   class << self
-    def post_query(question, address_to_send, option)
+    def post_query(question, address_to_send, subject, option)
       return WarningMailer.deliver_email('warning mail', address_to_send) if question.blank?
-      callback_url = "http://#{ENV['HOST_LODQA_EMAIL_AGENT']}/mail/#{address_to_send}/events"
+      mail_subject = URI.encode_www_form_component(subject)
+      callback_url = "http://#{ENV['HOST_LODQA_EMAIL_AGENT']}/mail_address/#{address_to_send}/mail_subject/#{mail_subject}/events"
       post_params = { query: question, callback_url: callback_url }
       post_params = populate_options(post_params, option) if option.present?
 
