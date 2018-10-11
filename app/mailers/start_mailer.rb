@@ -11,7 +11,7 @@ class StartMailer < ActionMailer::Base
   def build_email(subject, to_email, query, search_id, expiration_date, options)
     @query = query
     @search_id = search_id
-    @expiration_date = expiration_date.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M')
+    @expiration_date = expiration_date.in_time_zone('UTC').strftime('%Y/%m/%d %H:%M')
     @options = options
     mail(to: to_email, subject: subject, &:text)
   end
