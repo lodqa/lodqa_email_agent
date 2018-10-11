@@ -4,4 +4,6 @@ No answer was found.
 <%= @items_count %> items have been found as the answer to your question.
 You can see the results at:
 http://lodqa.org/answer?search_id=<%= @search_id %>
+
+It becomes invalid after the expiration date (<%= @expiration_date %>) of this URL has elapsed.
 <% end %>
