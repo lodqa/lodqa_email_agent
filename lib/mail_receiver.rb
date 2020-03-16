@@ -46,6 +46,7 @@ module MailReceiver
 
     # 本文情報でクエリのオプション値として設定
     def body_option(body)
+      body.gsub!(body.lines[0], "query=#{body.lines[0]}")
       option = IniFile.new(content: body)
       option[:global]
     rescue IniFile::Error
