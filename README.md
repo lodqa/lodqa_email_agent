@@ -21,7 +21,7 @@ HTML形式で記載してください。
 内容はINI形式で記述します。
 例えば、次のように記述します。
 
-    query=Which genes are associated with Endothelin receptor type B?
+    Which genes are associated with Endothelin receptor type B?
     read_timeout=5
     sparql_limit=100
     answer_limit=10
@@ -30,7 +30,7 @@ HTML形式で記載してください。
 
 | パラメーター名      | 意味                             | 必須    |
 | :----------- | :----------------------------- | :---- |
-| query        | 質問文                            | true  |
+|              | 質問文                            | true  |
 | read_timeout | SPARQLクエリのタイムアウト時間             | false |
 | sparql_limit | 一つのanhored pgpから生成するSPARQL数の上限 | false |
 | answer_limit | 一つのSPAQRQLから取得するsolutionの上限    | false |
