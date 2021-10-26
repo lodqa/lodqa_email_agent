@@ -35,7 +35,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: ENV['HOST_LODQA_EMAIL_AGENT'] }
   config.action_mailer.smtp_settings = {
     enable_starttls_auto: true,
-    address: 'luxiar-web.sakura.ne.jp',
+    address: 'smtp.gmail.com',
     port: '587',
     authentication: 'plain',
     user_name: ENV['POP_USERNAME'],
