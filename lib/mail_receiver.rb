@@ -26,8 +26,9 @@ module MailReceiver
                                 enable_ssl: Rails.configuration.pop_settings[:use_ssl]
       end
 
-      puts "Conncet to HOST:#{Rails.configuration.pop_settings[:address]}:#{Rails.configuration.pop_settings[:port]}
-             USER:#{Rails.configuration.pop_settings[:user_name]}/#{Rails.configuration.pop_settings[:password]}"
+      puts "Conncet to HOST:#{Rails.configuration.pop_settings[:address]}:#{Rails.configuration.pop_settings[:port]}"
+      puts "           USER:#{Rails.configuration.pop_settings[:user_name]}/#{Rails.configuration.pop_settings[:password]}"
+
       mails = Mail.find_and_delete
       puts "#{mails.length} mails recieved."
       mails
