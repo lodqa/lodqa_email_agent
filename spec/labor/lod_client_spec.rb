@@ -7,11 +7,11 @@ RSpec.describe LodqaClient do
     let(:question) { 'answers?' }
     let(:address_to_send) { 'lodemailagent@gmail.com' }
     let(:mail_subject) { 'please' }
-    let(:server_url) { 'http://lodqa_bs:3000/searches' }
+    let(:server_url) { 'http://lodqa-bs:3000/searches' }
     before(:all) do
       ENV['HOST_LODQA_EMAIL_AGENT'] = 'lodqa_email_agent:3000'
       ENV['FROM_EMAIL'] = 'lodqa_test@luxiar.com'
-      ENV['HOST_LODQA_BS'] = 'lodqa_bs:3000'
+      ENV['HOST_LODQA_BS'] = 'lodqa-bs:3000'
     end
 
     context 'LODQA_BSから成功レスポンスが帰ってきたとき' do

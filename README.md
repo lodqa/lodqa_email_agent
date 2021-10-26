@@ -45,7 +45,7 @@ HTML形式で記載してください。
 
 #### BSサーバーのホスト名設定
 
-    HOST_LODQA_BS=lodqa_bs:3000
+    HOST_LODQA_BS=lodqa-bs:3000
 
 #### 自サーバーのホスト名設定
 

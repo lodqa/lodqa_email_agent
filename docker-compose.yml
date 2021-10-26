@@ -1,6 +1,6 @@
 version: '3'
 services:
-  lodqa_bs:
+  lodqa-bs:
     build: https://github.com/lodqa/lodqa_bs.git
 
   lodqa_email_agent:
@@ -10,4 +10,4 @@ services:
     env_file:
       - .env
     depends_on:
-      - lodqa_bs
+      - lodqa-bs
