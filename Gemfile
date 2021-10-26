@@ -7,21 +7,11 @@ ruby '2.5.3'
 gem 'rails', '~> 5.2.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.12'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.5'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
 gem 'rest-client'
-
 gem 'inifile'
 
 group :development, :test do
