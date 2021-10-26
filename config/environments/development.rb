@@ -15,8 +15,6 @@ Rails.application.configure do
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
-    config.action_controller.perform_caching = true
-
     config.cache_store = :memory_store
     config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
@@ -41,12 +39,13 @@ Rails.application.configure do
     user_name: ENV['POP_USERNAME'],
     password: ENV['POP_PASSWORD']
   }
+  config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
 
-  # Raises error for missing translations
+  # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
 
   # Use an evented file watcher to asynchronously detect changes in source code,
