@@ -47,6 +47,8 @@ module MailReceiver
 
     # 本文情報でクエリのオプション値として設定
     def body_option(body)
+      return {} if body.lines.empty?
+
       # メール本文の一行目はquery内容とする。
       # iniファイル化するには、取得したquery内容をquery変数に指定する。
       body.gsub!(body.lines[0], "query=#{body.lines[0]}")
