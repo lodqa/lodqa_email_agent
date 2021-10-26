@@ -10,6 +10,7 @@ module MailReceiver
       mails = pop
       # 受信したメールが0件のとき
       return [] if mails.empty?
+
       mails.map { |mail| to_hash(mail) }
     end
 

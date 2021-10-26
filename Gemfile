@@ -21,7 +21,7 @@ end
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'rubocop', '~> 0.58.2'
+  gem 'rubocop'
   gem 'dotenv-rails'
   gem 'webmock'
   gem 'rspec-rails'

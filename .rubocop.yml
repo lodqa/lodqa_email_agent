@@ -1,23 +1,25 @@
 # Use only ascii symbols in comments.
-AsciiComments:
-  Enabled: false
 
-MethodLength:
-  CountComments: true # コメントも行数に数えるか
-  Max: 30 # メソッド内に何行書けるか
+Layout/LineLength:
+  Max: 130 # 1行あたりの文字数チェック
 
 Metrics/AbcSize:
   Enabled: true
   Max: 45 # ABCサイズチェック
 
-LineLength:
-  Max: 130 # 1行あたりの文字数チェック
+Metrics/MethodLength:
+  CountComments: true # コメントも行数に数えるか
+  Max: 30 # メソッド内に何行書けるか
 
-ParameterLists:
+Metrics/ParameterLists:
   Max: 6
   CountKeywordArgs: true
 
+Style/AsciiComments:
+  Enabled: false
+
 AllCops:
+  NewCops: enable
   Exclude:
     - config.ru
     - Gemfile
