@@ -100,7 +100,7 @@ config.action_mailer.smtp_settings = {
 この中にLODQA BSサーバーも含まれます。
 
 ```sh
-docker-compose build
+docker compose build
 ```
 
 前述の説明に従い`.env.example`を参考に`.env`ファイルを作成します。
@@ -108,11 +108,11 @@ docker-compose build
 e-mail agentサーバーを起動します。
 
 ```sh
-docker-compose up
+docker compose up
 ```
 
 メールチェックコマンドを実行します。
 
 ```sh
-docker-compose run --rm --service-ports lodqa_email_agent rails runner lib/check_new_mails.rb
+docker compose run --rm --service-ports lodqa_email_agent rails runner lib/check_new_mails.rb
 ```
