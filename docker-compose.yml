@@ -3,7 +3,7 @@ services:
   lodqa-bs:
     build: https://github.com/lodqa/lodqa_bs.git
 
-  lodqa_email_agent:
+  lodqa-email-agent:
     build: .
     volumes:
       - .:/usr/src/myapp

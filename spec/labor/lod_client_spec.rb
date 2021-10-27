@@ -9,7 +9,7 @@ RSpec.describe LodqaClient do
     let(:mail_subject) { 'please' }
     let(:server_url) { 'http://lodqa-bs:3000/searches' }
     before(:all) do
-      ENV['HOST_LODQA_EMAIL_AGENT'] = 'lodqa_email_agent:3000'
+      ENV['HOST_LODQA_EMAIL_AGENT'] = 'lodqa-email-agent:3000'
       ENV['FROM_EMAIL'] = 'lodqa_test@luxiar.com'
       ENV['HOST_LODQA_BS'] = 'lodqa-bs:3000'
     end
@@ -17,7 +17,7 @@ RSpec.describe LodqaClient do
     context 'LODQA_BSから成功レスポンスが帰ってきたとき' do
       let(:option) { { 'read_timeout' => 10, 'sparql_limit' => 100, 'answer_limit' => 10, 'cache' => 'no', 'target' => 'bio2rdf-mashup' } }
       before do
-        registered_query = { callback_url: "http://lodqa_email_agent:3000/mail_address/#{address_to_send}/mail_subject/#{mail_subject}/events",
+        registered_query = { callback_url: "http://lodqa-email-agent:3000/mail_address/#{address_to_send}/mail_subject/#{mail_subject}/events",
                              answer_limit: 10, cache: 'no', query: question, read_timeout: 10, sparql_limit: 100, target: 'bio2rdf-mashup' }
         @stub_success = stub_request(:post, server_url).with(body: registered_query).to_return(status: 200)
       end

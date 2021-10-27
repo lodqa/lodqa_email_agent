@@ -49,7 +49,7 @@ HTML形式で記載してください。
 
 #### 自サーバーのホスト名設定
 
-    HOST_LODQA_EMAIL_AGENT=lodqa_email_agent:3000
+    HOST_LODQA_EMAIL_AGENT=lodqa-email-agent:3000
 
 #### 送信元のメールアドレス設定
 
@@ -114,5 +114,5 @@ docker compose up
 メールチェックコマンドを実行します。
 
 ```sh
-docker compose run --rm --service-ports lodqa_email_agent rails runner lib/check_new_mails.rb
+docker compose run --rm --service-ports lodqa-email-agent rails runner lib/check_new_mails.rb
 ```
