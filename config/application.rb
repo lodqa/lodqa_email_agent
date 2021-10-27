@@ -36,6 +36,12 @@ module Myapp
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # SMTPサーバーの設定
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_url_options = { host: ENV['HOST_LODQA_EMAIL_AGENT'] }
+
+    # POPサーバーの設定
     config.pop_settings = {
       address: ENV['POP_ADDRESS'],
       port: ENV['POP_PORT'],

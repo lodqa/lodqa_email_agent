@@ -56,8 +56,6 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   # 接続するメールサーバーの設定(gmail)
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: ENV['HOST_LODQA_EMAIL_AGENT'] }
   config.action_mailer.smtp_settings = {
     enable_starttls_auto: true,
     address: 'smtp.gmail.com',
