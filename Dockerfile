@@ -1,4 +1,4 @@
-FROM ruby:2.5.3-alpine
+FROM ruby:2.7.4-alpine3.14
 
 ENV BUILD_PACKAGES="curl-dev ruby-dev build-base" \
     DEV_PACKAGES="zlib-dev libxml2-dev libxslt-dev tzdata yaml-dev sqlite-dev" \
@@ -23,6 +23,6 @@ COPY Gemfile.lock /usr/src/myapp
 
 RUN gem install bundler
 RUN bundle config build.nokogiri --use-system-libraries && \
-    bundle install --jobs=4 --retry=10 --clean
+    bundle install --jobs=4 --retry=10
 
 CMD ["bin/rails", "s", "-b", "0.0.0.0"]
