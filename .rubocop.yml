@@ -28,3 +28,7 @@ AllCops:
     - config/**/*
     - 'vendor/**/*'
     - spec/**/*
+
+require:
+  - rubocop-rails
+  - rubocop-rspec

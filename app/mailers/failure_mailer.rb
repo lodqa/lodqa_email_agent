@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # 失敗メール送信
-class FailureMailer < ActionMailer::Base
+class FailureMailer < ApplicationMailer
   default from: ENV.fetch('FROM_EMAIL', nil)
 
   def self.deliver_email(subject, to_email)

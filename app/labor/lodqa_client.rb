@@ -6,7 +6,7 @@ module LodqaClient
     def post_query(question, address_to_send, subject, option)
       return WarningMailer.deliver_email('warning mail', address_to_send) if question.blank?
 
-      puts "POST query #{question} to the LODQA_BS."
+      Rails.logger.debug { "POST query #{question} to the LODQA_BS." }
       mail_subject = URI.encode_www_form_component(subject || ' ')
       callback_url = "http://#{ENV.fetch('HOST_LODQA_EMAIL_AGENT',
                                          nil)}/mail_address/#{address_to_send}/mail_subject/#{mail_subject}/events"
@@ -15,11 +15,11 @@ module LodqaClient
 
       server_url = "http://#{ENV.fetch('HOST_LODQA_BS', nil)}/searches"
       RestClient::Request.execute method: :post, url: server_url, payload: post_params
-      puts 'POST succcess.'
+      Rails.logger.debug 'POST succcess.'
       true
     rescue Errno::ECONNREFUSED, Net::OpenTimeout, SocketError
       FailureMailer.deliver_email('failure mail', address_to_send)
-      puts 'POST failed.'
+      Rails.logger.debug 'POST failed.'
       false
     end
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # 終了メール送信
-class FinishMailer < ActionMailer::Base
+class FinishMailer < ApplicationMailer
   default from: ENV.fetch('FROM_EMAIL', nil)
 
   def self.deliver_email(subject, to_email, items_count, search_id, expiration_date)

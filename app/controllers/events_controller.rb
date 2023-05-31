@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   def create
     # イベントの取得
     event = params[:event]
-    return render status: 400 if event.blank?
+    return render status: :bad_request if event.blank?
 
     # 件名・送信先メールアドレス・検索ID・有効期限の取得
     subject = "Re: #{URI.decode_www_form_component(params[:mail_subject_id])[0, 130]}"

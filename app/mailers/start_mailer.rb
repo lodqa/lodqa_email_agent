@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # 開始メール送信
-class StartMailer < ActionMailer::Base
+class StartMailer < ApplicationMailer
   default from: ENV.fetch('FROM_EMAIL', nil)
 
   def self.deliver_email(subject, to_email, query, search_id, expiration_date, options)

@@ -14,6 +14,7 @@ gem 'inifile'
 group :development do
   gem 'rubocop'
   gem 'rubocop-rails'
+  gem 'rubocop-rspec'
   gem 'dotenv-rails'
   gem 'webmock'
   gem 'rspec-rails'

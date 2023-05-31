@@ -27,11 +27,15 @@ module MailReceiver
                                 enable_ssl: Rails.configuration.pop_settings[:use_ssl]
       end
 
-      puts "Conncet to HOST:#{Rails.configuration.pop_settings[:address]}:#{Rails.configuration.pop_settings[:port]}"
-      puts "           USER:#{Rails.configuration.pop_settings[:user_name]}/#{Rails.configuration.pop_settings[:password]}"
+      Rails.logger.debug do
+        "Conncet to HOST:#{Rails.configuration.pop_settings[:address]}:#{Rails.configuration.pop_settings[:port]}"
+      end
+      Rails.logger.debug do
+        "           USER:#{Rails.configuration.pop_settings[:user_name]}/#{Rails.configuration.pop_settings[:password]}"
+      end
 
       mails = Mail.find_and_delete
-      puts "#{mails.length} mails recieved."
+      Rails.logger.debug { "#{mails.length} mails recieved." }
       mails
     end
 
@@ -56,7 +60,7 @@ module MailReceiver
       option = IniFile.new(content: body)
       option[:global]
     rescue IniFile::Error
-      puts "The body(#{body}) could not be parsed as ini format."
+      Rails.logger.debug { "The body(#{body}) could not be parsed as ini format." }
       {}
     end
   end
