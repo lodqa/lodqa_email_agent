@@ -2,7 +2,7 @@
 
 # 終了メール送信
 class FinishMailer < ActionMailer::Base
-  default from: ENV['FROM_EMAIL']
+  default from: ENV.fetch('FROM_EMAIL', nil)
 
   def self.deliver_email(subject, to_email, items_count, search_id, expiration_date)
     build_email(subject, to_email, items_count, search_id, expiration_date).deliver_now

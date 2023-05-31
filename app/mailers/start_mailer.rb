@@ -2,7 +2,7 @@
 
 # 開始メール送信
 class StartMailer < ActionMailer::Base
-  default from: ENV['FROM_EMAIL']
+  default from: ENV.fetch('FROM_EMAIL', nil)
 
   def self.deliver_email(subject, to_email, query, search_id, expiration_date, options)
     build_email(subject, to_email, query, search_id, expiration_date, options).deliver_now

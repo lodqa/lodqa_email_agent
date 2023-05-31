@@ -2,7 +2,7 @@
 
 # 失敗メール送信
 class WarningMailer < ActionMailer::Base
-  default from: ENV['FROM_EMAIL']
+  default from: ENV.fetch('FROM_EMAIL', nil)
 
   def self.deliver_email(subject, to_email)
     build_email(subject, to_email).deliver_now
