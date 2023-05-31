@@ -8,19 +8,10 @@ gem 'rails', '~> 7.0.5'
 # Use Puma as the app server
 gem 'puma'
 
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', require: false
-
 gem 'rest-client'
 gem 'inifile'
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-end
-
 group :development do
-  gem 'listen'
   gem 'rubocop'
   gem 'dotenv-rails'
   gem 'webmock'
