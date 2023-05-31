@@ -100,6 +100,7 @@ config.action_mailer.smtp_settings = {
 この中にLODQA BSサーバーも含まれます。
 
 ```sh
+touch .env
 docker compose build
 ```
 
