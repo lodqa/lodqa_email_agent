@@ -13,6 +13,6 @@ class StartMailer < ActionMailer::Base
     @search_id = search_id
     @expiration_date = expiration_date.in_time_zone('UTC').strftime('%Y/%m/%d %H:%M')
     @options = options
-    mail(to: to_email, subject: subject, &:text)
+    mail(to: to_email, subject:, &:text)
   end
 end

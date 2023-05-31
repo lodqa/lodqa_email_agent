@@ -43,7 +43,7 @@ module MailReceiver
       query_option = body_option(mail.text_part.decoded)
       query = query_option['query']
       # メールアドレスとタイトルとクエリーオプションをハッシュ化
-      { reply_to: email, subject: subject, query: query, query_option: query_option }
+      { reply_to: email, subject:, query:, query_option: }
     end
 
     # 本文情報でクエリのオプション値として設定

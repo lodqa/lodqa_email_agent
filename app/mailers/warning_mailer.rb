@@ -9,6 +9,6 @@ class WarningMailer < ActionMailer::Base
   end
 
   def build_email(subject, to_email)
-    mail(to: to_email, subject: subject, &:text)
+    mail(to: to_email, subject:, &:text)
   end
 end

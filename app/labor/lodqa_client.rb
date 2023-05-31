@@ -10,7 +10,7 @@ module LodqaClient
       mail_subject = URI.encode_www_form_component(subject || ' ')
       callback_url = "http://#{ENV.fetch('HOST_LODQA_EMAIL_AGENT',
                                          nil)}/mail_address/#{address_to_send}/mail_subject/#{mail_subject}/events"
-      post_params = { query: question, callback_url: callback_url }
+      post_params = { query: question, callback_url: }
       post_params = populate_options(post_params, option) if option.present?
 
       server_url = "http://#{ENV.fetch('HOST_LODQA_BS', nil)}/searches"

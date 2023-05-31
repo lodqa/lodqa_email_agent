@@ -13,6 +13,7 @@ gem 'inifile'
 
 group :development do
   gem 'rubocop'
+  gem 'rubocop-rails'
   gem 'dotenv-rails'
   gem 'webmock'
   gem 'rspec-rails'
